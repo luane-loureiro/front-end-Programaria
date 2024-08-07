@@ -51,6 +51,7 @@ export function Content() {
 
     console.log('mensagem enviada', nome, minibio, imagem, github, linkedin)
 
+    
     async function sendData() {
       await Axios.post(baseURL, {
         nome: nome,
@@ -63,13 +64,12 @@ export function Content() {
       setRepositories(response.data)
     }
     sendData()
-
     setSuccess(true)
     setNome('')
     setminibio('')
     setImagem('')
     setGithub('')
-    setImagem('')
+    setLinkedin('')
   }
 
   return (
@@ -103,7 +103,7 @@ export function Content() {
         </div>
       </div>
       <div >
-        <h2 className={styles.projectsTitle}>Cadastre uma rainha tech:</h2>
+        <h2 className={styles.projectsTitle}>Cadastre uma Diva tech:</h2>
         <form  className={styles.form} onSubmit={handleCreateMessage}>
           <input 
             onChange={handleInputValueNome} 
@@ -121,19 +121,19 @@ export function Content() {
             onChange={handleInputValueminibio} 
             placeholder="Digite a minibiografia"
             value={minibio}
-            className={styles.formTextArea}
+            className={styles.formInput}
           />
           <textarea 
             onChange={handleInputValuegithub} 
             placeholder="Digite o link do GitHub"
             value={github}
-            className={styles.formTextArea}
+            className={styles.formInput}
           />
           <textarea 
             onChange={handleInputValuelinkedin} 
             placeholder="Digite o link do Linkedin"
             value={linkedin}
-            className={styles.formTextArea}
+            className={styles.formInput}
           />
           <button className={styles.formButton} type="submit">Enviar mensagem</button>
           {success && <p>Cadastro realizado com sucesso.</p>}
