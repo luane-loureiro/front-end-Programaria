@@ -30,6 +30,10 @@ export function Content() {
     setNome(event.target.value)
   }
 
+  function handleInputValueminibio(event) {
+    setImagem(event.target.value)
+  }
+
   function handleInputValuegithub(event) {
     setGithub(event.target.value)
   }
@@ -40,10 +44,6 @@ export function Content() {
 
   function handleInputValueImagem(event) {
     setImagem(event.target.value)
-  }
-
-  function handleInputValueCitacao(event) {
-    setCitacao(event.target.value)
   }
 
   function handleCreateMessage(event) {
@@ -124,13 +124,13 @@ export function Content() {
             className={styles.formTextArea}
           />
           <textarea 
-            onChange={handleInputValueGithub} 
+            onChange={handleInputValuegithub} 
             placeholder="Digite o link do GitHub"
             value={github}
             className={styles.formTextArea}
           />
           <textarea 
-            onChange={handleInputValueLinkedin} 
+            onChange={handleInputValuelinkedin} 
             placeholder="Digite o link do Linkedin"
             value={linkedin}
             className={styles.formTextArea}
