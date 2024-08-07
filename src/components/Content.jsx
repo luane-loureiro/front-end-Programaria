@@ -11,7 +11,8 @@ export function Content() {
   const [repositories, setRepositories] = useState([])
   const [nome, setNome] = useState('')
   const [minibio, setminibio] = useState('')
-  const [citacao, setCitacao] = useState('')
+  const [github, setGithub] = useState('')
+  const [linkedin, setLinkedin] = useState('')
   const [imagem, setImagem] = useState('')
   const [success, setSuccess] = useState(false)
   const baseURL = 'https://minha-primeira-api-jxtr.onrender.com/mulheres'
@@ -29,8 +30,12 @@ export function Content() {
     setNome(event.target.value)
   }
 
-  function handleInputValueminibio(event) {
-    setminibio(event.target.value)
+  function handleInputValuegithub(event) {
+    setGithub(event.target.value)
+  }
+
+  function handleInputValuelinkedin(event) {
+    setLinkedin(event.target.value)
   }
 
   function handleInputValueImagem(event) {
@@ -44,13 +49,14 @@ export function Content() {
   function handleCreateMessage(event) {
     event.preventDefault()
 
-    console.log('mensagem enviada', nome, citacao, minibio, imagem)
+    console.log('mensagem enviada', nome, minibio, imagem, github, linkedin)
 
     async function sendData() {
       await Axios.post(baseURL, {
         nome: nome,
-        citacao: citacao,
         minibio: minibio,
+        github: github,
+        linkedin: linkedin,
         imagem: imagem
       })
       const response = await Axios.get(baseURL)
@@ -62,7 +68,8 @@ export function Content() {
     setNome('')
     setminibio('')
     setImagem('')
-    setCitacao('')
+    setGithub('')
+    setImagem('')
   }
 
   return (
@@ -86,7 +93,8 @@ export function Content() {
                     {repo.nome}
                   </summary>
                   <p className={styles.cardRepoText}>{repo.minibio}</p>
-                  <q className={styles.cardRepoQuote}>{repo.citacao}</q>
+                  <p className={styles.cardRepoText}>{repo.github}</p>
+                  <p className={styles.cardRepoText}>{repo.linkedin}</p>
                 </details>
               </div>
               )
@@ -116,9 +124,15 @@ export function Content() {
             className={styles.formTextArea}
           />
           <textarea 
-            onChange={handleInputValueCitacao} 
-            placeholder="Digite a citação"
-            value={citacao}
+            onChange={handleInputValueGithub} 
+            placeholder="Digite o link do GitHub"
+            value={github}
+            className={styles.formTextArea}
+          />
+          <textarea 
+            onChange={handleInputValueLinkedin} 
+            placeholder="Digite o link do Linkedin"
+            value={linkedin}
             className={styles.formTextArea}
           />
           <button className={styles.formButton} type="submit">Enviar mensagem</button>
