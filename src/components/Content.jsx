@@ -51,7 +51,7 @@ export function Content() {
 
     console.log('mensagem enviada', nome, minibio, imagem, github, linkedin)
 
-    
+
     async function sendData() {
       await Axios.post(baseURL, {
         nome: nome,
@@ -93,8 +93,8 @@ export function Content() {
                     {repo.nome}
                   </summary>
                   <p className={styles.cardRepoText}>{repo.minibio}</p>
-                  <p className={styles.cardRepoText}>{repo.github}</p>
-                  <p className={styles.cardRepoText}>{repo.linkedin}</p>
+                  <a href={repo.github} className={styles.cardRepoText}>{repo.github}</a>
+                  <a href={repo.linkedin} className={styles.cardRepoText}>{repo.linkedin}</a>
                 </details>
               </div>
               )
